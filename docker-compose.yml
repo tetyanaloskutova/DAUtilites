@@ -1,0 +1,20 @@
+version: '3'
+services:
+  sandbox:
+    build:
+      context: .
+    volumes:
+      - .:/code
+    command: tail -f /dev/null
+ db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pguser
+      POSTGRES_DB: pgdb
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
